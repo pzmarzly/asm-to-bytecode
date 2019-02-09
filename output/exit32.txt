@@ -1,0 +1,14 @@
+SECTION .data
+SECTION .text
+global _start
+_start:
+    mov eax,1
+    mov ebx,2
+    int 0x80
+============
+ 8049000:	b8 01 00 00 00       	mov    $0x1,%eax
+ 8049005:	bb 02 00 00 00       	mov    $0x2,%ebx
+ 804900a:	cd 80                	int    $0x80
+============
+exit(2)                                 = ?
++++ exited with 2 +++

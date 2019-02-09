@@ -1,0 +1,14 @@
+SECTION .data
+SECTION .text
+global _start
+_start:
+    mov rax,60
+    mov rdi,2
+    syscall
+============
+  401000:	b8 3c 00 00 00       	mov    $0x3c,%eax
+  401005:	bf 02 00 00 00       	mov    $0x2,%edi
+  40100a:	0f 05                	syscall 
+============
+exit(2)                                 = ?
++++ exited with 2 +++

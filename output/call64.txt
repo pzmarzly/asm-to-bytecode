@@ -1,0 +1,23 @@
+SECTION .data
+SECTION .text
+global _start
+_start:
+    push rbp ; taken from https://www.csee.umbc.edu/portal/help/nasm/sample_64.shtml
+    mov rdi,2
+    call func_exit
+    pop rbp
+func_exit:
+    mov rax,60
+    syscall
+============
+  401000:	55                   	push   %rbp
+  401001:	bf 02 00 00 00       	mov    $0x2,%edi
+  401006:	e8 01 00 00 00       	callq  40100c <func_exit>
+  40100b:	5d                   	pop    %rbp
+
+000000000040100c <func_exit>:
+  40100c:	b8 3c 00 00 00       	mov    $0x3c,%eax
+  401011:	0f 05                	syscall 
+============
+exit(2)                                 = ?
++++ exited with 2 +++

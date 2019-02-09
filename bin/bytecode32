@@ -1,0 +1,5 @@
+#!/bin/bash
+ELF_FORMAT=elf
+LD_FORMAT=-melf_i386
+SKIP_STRACE_LINES=3
+. bin/_bytecode

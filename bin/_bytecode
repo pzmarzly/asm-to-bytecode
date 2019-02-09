@@ -1,0 +1,22 @@
+#!/bin/bash
+set -e
+
+set +e
+mkdir output > /dev/null 2>&1
+set -e
+
+nasm -f $ELF_FORMAT input/$1.asm -o output/$1.tmp
+ld -o output/$1.elf output/$1.tmp $LD_FORMAT
+rm output/$1.tmp
+
+cat input/$1.asm > output/$1.txt
+echo "============" >> output/$1.txt
+
+objdump -d output/$1.elf | tail -n +8 >> output/$1.txt
+echo "============" >> output/$1.txt
+
+set +e
+strace output/$1.elf  2>&1 | tail -n "+$SKIP_STRACE_LINES" >> output/$1.txt
+set -e
+
+rm output/$1.elf
